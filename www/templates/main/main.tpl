@@ -1,12 +1,2 @@
-<main>
-	<h1>Main - main.tpl</h1>
-<!--	<h2><?=$title?></h2>
-		<p><?=$content?></p> -->
-
-	<h2><?=$aboutName?></h2>
-	<p><?=$aboutDescription?></p>
-
-</main>
-
-
+<body class="content-page">
 
