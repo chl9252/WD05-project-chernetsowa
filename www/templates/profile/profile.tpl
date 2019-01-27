@@ -18,8 +18,8 @@
 							
 							<div class="user-profile__description"><span>Имя и фамилия</span>
 								<p><?=$currentUser->name?> <?=$currentUser->lastname?></p><span>Email</span>
-								<p><?=$currentUser->email?></p><span>Страна Город</span>
-								<p><?=$currentUser->country?>, <?=$currentUser->city?></p>
+								<p><?=$currentUser->email?></p><span>Страна, Город</span>
+								<p><?=$currentUser->country?> <?=$currentUser->city?></p>
 							</div>
 						</div>
 						
