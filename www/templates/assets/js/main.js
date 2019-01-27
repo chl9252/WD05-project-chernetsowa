@@ -5,6 +5,8 @@ $(document).ready(function() {
 
 	var checkRegistration = (function(){
 
+	
+
 		// Переменные модуля
 
 		var _form = $('#registrationForm'),
@@ -17,6 +19,25 @@ $(document).ready(function() {
 			_notifyEmailOccupy = _form.find('#notify-email-occupy'),
 			_notifyEmailOccupy2 = _form.find('#notify-email-occupy2'),
 			_pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+
+
+	_inputEmail.on('focus', function(){
+		
+		var item1 = $('#notify1-php');
+		if($("div").index(item1)>0){
+			$('#notify1-php').addClass('hidden');
+		};
+		var item2 = $('#notify2-php');
+		if($("div").index(item2)>0){
+			$('#notify2-php').addClass('hidden');
+		};
+		var item3 = $('#notify3-php');
+		if($("div").index(item3)>0){
+			$('#notify3-php').addClass('hidden');
+		};
+		})
+
+
 
 		// Метод инициализации (запуска) модуля
 
@@ -135,6 +156,22 @@ $(document).ready(function() {
 			_notifyPassword = _form.find('#notify-password'),
 			_notifyEmailPassword = _form.find('#notify-email-password'),
 			_pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+
+		_inputEmail.on('focus', function(){
+		
+			var item1 = $('#notify1-php');
+			if($("div").index(item1)>0){
+				$('#notify1-php').addClass('hidden');
+			};
+			var item2 = $('#notify2-php');
+			if($("div").index(item2)>0){
+				$('#notify2-php').addClass('hidden');
+			};
+			var item3 = $('#notify3-php');
+			if($("div").index(item3)>0){
+				$('#notify3-php').addClass('hidden');
+			};
+		})
 
 		// Метод инициализации (запуска) модуля
 

@@ -13,7 +13,7 @@
 							<div id="notify-password" class="notify notification__title notification--error mb-20 hidden">Введите пароль</div>
 						<div class="notification__title notification--error notification--with-description  hidden" id="notify-email-occupy">Данный email уже занят</div>
 						<div class="notification__description  hidden" id="notify-email-occupy2">
-							<p>Используйте другой email чтобы создать новый аккаунт.</p>
+			 				<p>Используйте другой email чтобы создать новый аккаунт.</p>
 							<p>Или воспользуйтесь <a href="#!">восстановлением пароля</a>, чтобы войти на сайт.</p>
 						</div>
 					</div>
