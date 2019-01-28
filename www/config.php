@@ -8,8 +8,12 @@ define('DB_PASS', '');
 
 // HOST of SITE
 
-define('HOST', $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/');
+define('HOST', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 
-define('ROOT', dirname(__FILE__).'/');
+
+
+define('SITE_NAME', 'Сайт портфолио - WebDev05');
+define('SITE_EMAIL', 'info@webdev05.ru');
+define('ADMIN_EMAIL', 'chl9252@mail.ru');
 
 ?>
