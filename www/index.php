@@ -50,11 +50,18 @@ switch ( $uri[0]) {
 	case 'contacts':
 		require ROOT . "modules/contacts/index.php";
 		break;
+// -------------- Blog ------------------
 	case 'blog':
 		require ROOT . "modules/blog/index.php";
 		break;
-	case 'works':
-		require ROOT . "modules/works/index.php";
+	case 'blog/post-new':
+		require ROOT . "modules/blog/post-new.php";
+		break;
+	case 'blog/post':
+		require ROOT . "modules/blog/post.php";
+		break;
+	case 'portfolio':
+		require ROOT . "modules/portfolio/index.php";
 		break;
 	default:
 		require ROOT . "modules/main/index.php";

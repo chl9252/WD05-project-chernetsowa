@@ -4,4 +4,10 @@
 img {
 	width: 100%;
 }
-
+.nav__link--active {
+	 font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}

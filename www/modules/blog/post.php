@@ -1,14 +1,14 @@
 <?php
 
-$title = "Блог - все записи";
+$title = "Пост в Блоге";
 
-//$currentUser = $_SESSION['logged_user'];
+//$posts = R::find('posts', 'ORDER BY id DESC');
 
-$posts = R::find('posts', 'ORDER BY id DESC');
+$post = R::findOne('posts', 'id = ?', array($_GET['id']));
 
 ob_start();
 include ROOT . "templates/_parts/_header.tpl";
-include ROOT . "templates/blog/blog-all-posts.tpl";
+include ROOT . "templates/blog/post.tpl";
 
 $content = ob_get_contents();
 ob_end_clean();
