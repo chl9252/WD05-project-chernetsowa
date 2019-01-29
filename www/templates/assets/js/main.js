@@ -458,5 +458,12 @@ $(document).ready(function() {
 
 	checkNewpassword.init();
 
+	setTimeout(function(){
+		$('[data-notify-hide]').slideUp(400);
+	},2000);
+	$('[data-notify-hide]').dblClick(function(){
+		$(this).slideUp(400);
+	});
+
 	
 });

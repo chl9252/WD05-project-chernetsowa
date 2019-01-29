@@ -60,6 +60,19 @@ switch ( $uri[0]) {
 	case 'blog/post':
 		require ROOT . "modules/blog/post.php";
 		break;
+// -------------- Categories ------------------	
+	case 'blog/categories':
+		require ROOT . "modules/categories/all.php"; //all
+		break;
+	case 'blog/category-new':
+		require ROOT . "modules/categories/new.php"; //add
+		break;
+	case 'blog/category-edit':
+		require ROOT . "modules/categories/edit.php"; //edit
+		break;	
+	case 'blog/category-delete':
+		require ROOT . "modules/categories/delete.php"; //delete
+		break;
 	case 'portfolio':
 		require ROOT . "modules/portfolio/index.php";
 		break;

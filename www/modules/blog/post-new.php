@@ -96,7 +96,7 @@ if(isset($_POST['postNew'])){
 			$resized_file = $postImgFolderLocationMin.$db_file_name;
 			$wmax = 320;
 			$hmax = 140;
-			$img = createThumbnail($target_file,$wmax,$hmax);
+			$img = createThumbnailCrop($target_file,$wmax,$hmax);
 			$img->writeImage($resized_file);
 
 //			$user->avatarsmall =  "48-" . $db_file_name;
