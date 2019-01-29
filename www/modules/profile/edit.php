@@ -48,7 +48,7 @@ if(isset($_POST['profile-edit'])){
 			
 
 			if($fileSize > 4194304) {
-				$errors[] = "Картинка не может быть более 4 Мбайт";
+				$errors[] = ['title' => 'Картинка не может быть более 4 Мбайт'];
 			} else if (!preg_match("/\.(gif|jpg|jpeg|png)$/i",$fileName)){
 				$errors[] = ['title' => 'Картинка не gif|jpg|jpeg|png'];
 				} else if ($fileErrorMsg ==1) {
@@ -104,11 +104,7 @@ if(isset($_POST['profile-edit'])){
 			$user->avatarsmall = $db_file_name;
 		}
 
-	
 
-//		$user->role = 'user';
-//		$user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-		
 		R::store($user);
 
 		$_SESSION['logged_user'] = $user;
