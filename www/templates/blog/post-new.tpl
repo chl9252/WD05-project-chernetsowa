@@ -10,6 +10,15 @@
 						<label class="label" for="add-post-name">Заголовок поста</label>
 						<input class="input" name="post-name" id="add-post-name" type="text" placeholder="Введите заголовок" />
 					</div>
+					<div class="add-post-content__name mt-40">
+						<label class="label" for="add-post-cat">Категория </label>
+						<select class="user mt-10" name="post-cat" id="add-post-cat">
+							<?php foreach ($cats as $cat): ?>
+							<option value="<?=$cat['id']?>"><?=$cat['cat_title']?></option>
+							<?php endforeach ?>
+						</select>
+
+					</div>
 					<div class="add-post-content__img mt-30">
 						<section class="upload-file">
 							<h6 class="upload-file__title">Изображение</h6>
@@ -21,7 +30,8 @@
 					</div>
 					<div class="add-post-content__main mt-30">
 						<label class="label" for="add-post-city">Содержание</label>
-						<textarea class="textarea" name="postText" id="add-post-city" placeholder="Введите содержание"></textarea>
+						<p></p>
+						<textarea id="ckEditor1" class="textarea" name="postText" id="add-post-city" placeholder="Введите содержание"></textarea>
 					</div>
 					<div class="add-post-content__submit mt-30">
 						<input class="button button-save mr-20" type="submit" name="postNew" value="Сохранить" />

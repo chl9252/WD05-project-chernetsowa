@@ -4,17 +4,31 @@
 				<div class="post">
 					<div class="post-head works-title">
 					<div class="works-title-left">	<h1 class="title-general mb-0 mt-0"><?=$post['title']?></h1></div>
-					<div class="works-title-right">	<a class="button button-edit" href="#">Редактировать</a></div>
+					<?php if (isAdmin()) { ?>
+						<div class="works-title">
+							<div>
+								<a class="button button-edit" href="<?=HOST?>blog/post-edit?id=<?=$post['id']?>">Редактировать</a>
+							</div>
+							<div>
+								<a class="button button-delete ml-2" href="<?=HOST?>blog/post-delete?id=<?=$post['id']?>">Удалить</a>
+							</div>
+						</div>
+					<?php } ?>
 					</div>
 					<div class="post-info">
-						<div class="post-info__author">Емельян Казаков</div>
-						<div class="post-info__topic"><a class="postlink" href="#">Путешествия</a></div>
+						<div class="post-info__author"><?=$post['name']?> <?=$post['lastname']?></div>
+						<div class="post-info__topic"><a class="postlink" href="#"><?=$post['cat_title']?></a></div>
 						<div class="post-info__date"><? echo rus_date("j F Y H:i", strtotime($post['date_time'])) ?></div>
-						<div class="post-info__comments"><a class="postlink" href="#">2 комментария</a></div>
+						<div class="post-info__comments mr-10"><a class="postlink" href="#">2 комментария</a></div>
+						<?php if(isset($post['update_time'])) { ?>
+						<div class="post-info__date"><? echo rus_date("j F Y H:i", strtotime($post['update_time'])) ?></div>
+						<?php } ?>
 					</div>
+					<?php if ($post['post_img'] != "") { ?>
 					<div class="post-img">
 						<img src="<?=HOST?>usercontent/blog/full/<?=$post['post_img']?>" alt="<?=$post['title']?>" />
 					</div>
+					<?php } ?>
 					<div class="post-content mb-25"><?=$post['text']?></div>
 					<div class="post-buttons-nav mb-25"><a class="button button-previous" href="#">Назад <span class="button__icon button__icon--mright float-left"><i class="mr-0 fas fa-arrow-left"></i></span></a><a class="button button-next" href="#">Вперед <span class="button__icon"><i class="mr-0 fas fa-arrow-right"></i></span></a></div>
 				</div>

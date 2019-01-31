@@ -57,6 +57,12 @@ switch ( $uri[0]) {
 	case 'blog/post-new':
 		require ROOT . "modules/blog/post-new.php";
 		break;
+	case 'blog/post-edit':
+		require ROOT . "modules/blog/post-edit.php";
+		break;
+	case 'blog/post-delete':
+		require ROOT . "modules/blog/post-delete.php";
+		break;
 	case 'blog/post':
 		require ROOT . "modules/blog/post.php";
 		break;

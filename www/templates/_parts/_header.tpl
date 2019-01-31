@@ -1,6 +1,6 @@
 <?php
 
-if ( isset($_SESSION['logged_user']) && $_SESSION['login'] == 1 && $_SESSION['role'] == 'admin') {
+if ( isAdmin()) {
 	include ROOT . "templates/_parts/_admin-panel.tpl";
 }
 ?>
@@ -9,7 +9,7 @@ if ( isset($_SESSION['logged_user']) && $_SESSION['login'] == 1 && $_SESSION['ro
 	<div class="row header__wrapper">
 		<?php	include ROOT . "templates/_parts/_header-logo.tpl"; 
 		
-		if ( isset($_SESSION['logged_user']) && $_SESSION['login'] == 1) {
+		if (isLoggedIn()) {
 			if ($_SESSION['role'] != 'admin') {
 				include ROOT . "templates/_parts/_header-user-profile.tpl";
 			}
