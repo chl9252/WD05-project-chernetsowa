@@ -1,8 +1,13 @@
 <?php
 
+if (!isAdmin()) {
+	header("Location: " . HOST);
+	die;
+}
+
 $title = "Блог - добавить новый пост";
 
-//$currentUser = $_SESSION['logged_user'];
+$cats = R::find('categories', 'ORDER BY cat_title ASC');
 
 if(isset($_POST['postNew'])){
 
@@ -19,6 +24,7 @@ if(isset($_POST['postNew'])){
 		$post = R::dispense('posts');
 		
 		$post->title = htmlentities($_POST['post-name']);
+		$post->cat = htmlentities($_POST['post-cat']);
 		$post->text = $_POST['postText'];
 		$post->authorId = $_SESSION['logged_user']['id'];
 		$post->dateTime = R::isoDateTime();
@@ -54,20 +60,7 @@ if(isset($_POST['postNew'])){
 			$postImgFolderLocation = ROOT.'usercontent/blog/full/';
 			$postImgFolderLocationMin = ROOT.'usercontent/blog/min/';				
 
-/*			$postImg = $user['postImg'];
 
-
-			if ( $postImg != "") {
-				$picurl = $postImgFolderLocation . $postImg;
-
-				if ( file_exists($picurl) ) {unlink($picurl);}
-
-				$picurl = $postImgFolderLocationMin . $postImg;
-
-				if ( file_exists($picurl) ) {unlink($picurl);}
-
-			}
-*/
 
 			$db_file_name = rand(10000000,99999999).".".$fileExt;
 
@@ -109,24 +102,12 @@ if(isset($_POST['postNew'])){
 		$currentUser = $_SESSION['logged_user'];*/
 
 		R::store($post);
-		header('Location:' . HOST . "blog");
+		header('Location:' . HOST . "blog?result=postCreated");
 		exit();
 
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 ob_start();
 include ROOT . "templates/_parts/_header.tpl";
@@ -138,7 +119,7 @@ ob_end_clean();
 include ROOT . "templates/_parts/_head.tpl";
 include ROOT . "templates/template.tpl";
 include ROOT . "templates/_parts/_footer.tpl";
-include ROOT . "templates/_parts/_foot.tpl";
+include ROOT . "templates/_parts/_foot-editor.tpl";
 
 
 

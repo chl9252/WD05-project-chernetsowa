@@ -1,5 +1,10 @@
 <?php
 
+if (!isAdmin()) {
+	header("Location: " . HOST);
+	die;
+}
+
 $title = "Создать новую категорию";
 
 //$cats = R::find('categories', 'ORDER BY id DESC');
