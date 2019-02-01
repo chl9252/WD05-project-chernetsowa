@@ -105,23 +105,10 @@ $(document).ready(function() {
 						})
 					};
 
-/*				if(_inputEmail.val().toLowerCase() === 'mail@mail.com')  {
-					valid = false;
-					_notifyEmailOccupy.fadeIn(700);
-					_notifyEmailOccupy2.fadeIn(700);
-					_inputEmail.on('focus', function(){
-						_notifyEmailOccupy.fadeOut(700);
-						_notifyEmailOccupy2.fadeOut(700);
-						_form.trigger("reset");
-					});
-				}*/
-
 			};
 
 
-			
 
-//			 email  invalid
 
 			if (valid) {
 //				_form.unbind('submit').submit();
@@ -143,6 +130,8 @@ $(document).ready(function() {
 	}());
 
 	checkRegistration.init();
+
+//-----------------------------------------------
 	
 	var checkLogin = (function(){
 
@@ -236,28 +225,8 @@ $(document).ready(function() {
 
 				})
 			};
-
 			
-
-			// email & password invalid
-
-/*			if (valid) {
-				if(((_inputEmail.val().toLowerCase() === 'mail@mail.com') & (_inputPassword.val() === '123'))) {
-					_form.unbind('submit').submit();
-					}else {
-						_notifyEmailPassword.fadeIn(700);
-						_inputEmail.on('focus', function(){
-							_notifyEmailPassword.fadeOut(700);
-
-						})
-					}
-				}; */
-
-
-			}
-						
-
-
+		}
 
 		return {
 			init
@@ -267,7 +236,66 @@ $(document).ready(function() {
 	}());
 
 	checkLogin.init();
+//-----------------------------------
 
+		var checkComment = (function(){
+
+		// Переменные модуля
+
+		var _form = $('#comment-add-form'),
+			_commentText = _form.find('.textarea'),
+			_notify = _form.find('.notification__title');
+
+		// Метод инициализации (запуска) модуля
+
+		var init = function(){
+			_setupListeners();
+
+		};
+
+		// Метод прослушки событий
+
+		var _setupListeners = function(){
+			_form.on('submit', function(event){
+				_formValidate(event);
+
+			});
+		};
+
+		// Приватные методы
+
+		var _formValidate = function(event){
+//			event.preventDefault();
+
+			// proverka
+
+			if(_commentText.val().trim().length === 0) {
+				event.preventDefault();
+				_notify.fadeIn(700);
+
+				_commentText.on('focus', function(){
+					_notify.fadeOut(700);
+					_form.trigger("reset");
+				})
+
+			} 
+//			else {
+//				_notify.fadeOut(700);
+//				_form.unbind('submit').submit();
+//			}
+
+		};
+
+		return {
+			init
+		};
+
+
+	}());
+
+	checkComment.init();
+
+//-------------------------------------
 	var checkLostpassword = (function(){
 
 		// Переменные модуля

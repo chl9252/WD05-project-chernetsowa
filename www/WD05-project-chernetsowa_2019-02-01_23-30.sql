@@ -1,4 +1,4 @@
-#SKD101|WD05-project-chernetsowa|4|2019.02.01 02:31:31|17|1|3|5|8
+#SKD101|WD05-project-chernetsowa|5|2019.02.01 23:30:44|24|1|3|7|5|8
 
 DROP TABLE IF EXISTS `about`;
 CREATE TABLE `about` (
@@ -22,6 +22,27 @@ INSERT INTO `categories` VALUES
 (1, 'category1'),
 (2, 'category2'),
 (5, 'category333');
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) unsigned DEFAULT NULL,
+  `user_id` int(11) unsigned DEFAULT NULL,
+  `text` varchar(255) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_foreignkey_comments_post` (`post_id`),
+  KEY `index_foreignkey_comments_user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 /*!40101 DEFAULT CHARSET=utf8mb4 */ /*!40101 COLLATE=utf8mb4_unicode_ci */;
+
+INSERT INTO `comments` VALUES
+(1, 19, 2, 'Была там в прошлом году и нисколько не пожалела. ', '2019-02-01 20:43:43'),
+(2, 19, 2, 'Замечательный парк', '2019-02-01 22:11:40'),
+(3, 19, 2, 'fghdfhdf', '2019-02-01 22:21:30'),
+(4, 12, 2, 'fgjhfghf', '2019-02-01 23:07:20'),
+(5, 12, 2, 'Первым о начале сборки iPhone в Индии с начала 2019 г. сообщало издание The Hindu, вопрос обсуждался 25 декабря на заседании кабинета министров страны. При этом в правительстве не указывали, какие именно модели', '2019-02-01 23:10:54'),
+(6, 9, 4, 'насколько я понимаю, был в том, чтобы убедить представителей НАТО в порядке дисциплины. Французы, немцы, британцы, ', '2019-02-01 23:18:54'),
+(7, 19, 4, 'Была там в прошлом году', '2019-02-01 23:20:04');
 
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
@@ -49,7 +70,7 @@ INSERT INTO `posts` VALUES
 (19, 'ghkghkg', '<p>fyhtf fydr drydry drydr</p>\r\n', 2, NULL, '80202636.jpg', 2, '2019-02-01 01:00:47'),
 (20, 'proba date reg', 'dfydf drtrte tet wet weter 55555555555555555', 2, '2019-01-31 21:04:49', '40662841.jpg', 1, '2019-01-31 22:52:52'),
 (21, 'new new new222', '<p>jkjj hkhkh klhkllk lkklhlk lkhklh lkhlkh&nbsp;</p>\r\n\r\n<p>kjgjkh klhklh lkhlk lkhklh hlkhkj</p>\r\n', 2, '2019-01-31 23:30:45', '61781311.jpg', 2, '2019-02-01 01:01:34'),
-(22, 'ggggggggggggggggggggggggg', '<p>gggggggg gggggggggggggg ggggggggggg ggggggggggggggg ggggggggggggggggggg ggggggggggggggggggggggggggg ggggggggg</p>\r\n', 2, '2019-02-01 02:08:28', NULL, 2, NULL),
+(22, 'ggggggggggggggggggggggggg', '<p>gggggggg gggggggggggggg ggggggggggg ggggggggggggggg ggggggggggggggggggg ggggggggggggggggggggggggggg ggggggggg</p>\r\n', 2, '2019-02-01 02:08:28', '43947753.jpg', 2, '2019-02-01 14:13:09'),
 (23, 'hhhhhhhhhhhhhhhhhhh', '<p>hhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhh</p>\r\n', 2, '2019-02-01 02:13:03', NULL, 1, NULL);
 
 DROP TABLE IF EXISTS `users`;
