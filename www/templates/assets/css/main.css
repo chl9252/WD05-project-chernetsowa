@@ -719,6 +719,8 @@ a.title-medium,
   width: 205px;
   height: 205px;
   border-radius: 50%;
+  background-image: url("../img/avatars/avatar-default.jpg");
+  background-size: contain;
   overflow: hidden;
 }
 .avatar--small {
