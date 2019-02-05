@@ -15,7 +15,13 @@ function dataFromPost($fieldName){
 					<h1 class="title-general mt-0 mb-10">Редактировать данные</h1>
 				</div>
 				<?php	require ROOT . "templates/_parts/_errors.tpl"; ?>
-				<form class="contacts-edit__form mt-40" action="<?=HOST?>contacts-edit" method="POST">
+				<form class="contacts-edit__form mt-40" id="contacts-form" action="<?=HOST?>contacts-edit" method="POST" novalidate>
+
+					<div class="notification">
+								<div id='notify-email' class="notify notification__title notification--error mb-20 hidden">Введите email</div>
+								<div id="notify-email2" class="notify notification__title notification--error mb-20 hidden">Неверный формат email</div>
+						</div>
+
 					<div class="row">
 						<div class="col-md-3 mb-30">
 							<label class="label" for="contactName">Имя</label>

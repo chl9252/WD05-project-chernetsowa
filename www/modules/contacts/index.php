@@ -24,6 +24,79 @@ $title = "Контакты";
 
 $contacts = R::load('contacts', 1);
 
+if(isset($_POST['save-message'])){
+
+	if (trim($_POST['email']) == '') {
+		$errors[] = ['title' => 'Введите Email'];
+	}
+
+	if (empty($errors)) {
+
+		$message = R::dispense('messages');
+		
+		$message->email = htmlentities($_POST['email']);
+		$message->name = htmlentities($_POST['name']);
+		$message->message = htmlentities($_POST['message']);
+		$message->dateTime = R::isoDateTime();
+
+		// image add
+		
+		if ( isset($_FILES['file']['name']) && ($_FILES['file']['tmp_name'] != "") ) {
+
+			$fileName = $_FILES["file"]["name"];
+			$fileTmpLoc = $_FILES["file"]["tmp_name"];
+			$fileType = $_FILES["file"]["type"];
+			$fileSize = $_FILES["file"]["size"];
+			$fileErrorMsg = $_FILES["file"]["error"];
+			$kaboom = explode(".",$fileName);
+			$fileExt = end($kaboom);
+
+			list($width,$height) = getimagesize($fileTmpLoc); 
+			if($width < 10 || $height < 10) {
+				$errors[] = ['title' => 'Файл не имеет размеров'];
+			}
+
+			
+
+			if($fileSize > 4194304) {
+				$errors[] = ['title' => 'Файл не может быть более 4 Мбайт'];
+			} else if (!preg_match("/\.(gif|jpg|jpeg|png|pdf|doc)$/i",$fileName)){
+				$errors[] = ['title' => 'Файл не gif|jpg|jpeg|png|pdf|doc'];
+				} else if ($fileErrorMsg ==1) {
+					$errors[] = ['title' => 'Неизвестная ошибка при добавлении файла'];
+				}
+
+			$fileFolderLocation = ROOT.'usercontent/message/';
+
+
+			$db_file_name = rand(10000000,99999999).".".$fileExt;
+
+			// начнем перемещать
+
+			$uploadfile = $fileFolderLocation.$db_file_name;
+			$moveResult = move_uploaded_file($fileTmpLoc,$uploadfile);
+			if($moveResult != true) {
+				$errors[] = ['title' => 'Файл не загружен'];
+			}
+
+			$message->message_file_name_original = $fileName;
+
+			$message->message_file = $db_file_name;
+
+			
+		}
+
+		R::store($message);
+
+		$success[] = ['title' => 'Сообщение было успешно отправлено!'];
+
+//		header('Location:' . HOST . "contacts");
+//		exit();
+
+	}
+
+}
+
 ob_start();
 include ROOT . "templates/_parts/_header.tpl";
 include ROOT . "templates/contacts/contacts.tpl";
