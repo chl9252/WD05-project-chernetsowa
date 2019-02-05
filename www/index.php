@@ -79,6 +79,17 @@ switch ( $uri[0]) {
 	case 'blog/category-delete':
 		require ROOT . "modules/categories/delete.php"; //delete
 		break;
+// -------------- Contacts ------------------	
+	case 'contacts':
+		require ROOT . "modules/contacts/index.php"; //all
+		break;
+	case 'contacts-edit':
+		require ROOT . "modules/contacts/edit.php"; //edit
+		break;
+	case 'messages':
+		require ROOT . "modules/contacts/messages.php"; //message
+		break;
+// --------------	
 	case 'portfolio':
 		require ROOT . "modules/portfolio/index.php";
 		break;

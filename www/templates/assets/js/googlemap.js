@@ -1,4 +1,3 @@
-
 function initMap() {
 
     let zelenograd = {lat: 55.987127, lng: 37.202124};
