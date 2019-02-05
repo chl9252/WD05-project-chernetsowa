@@ -29,6 +29,13 @@ if(isset($_POST['save-message'])){
 	if (trim($_POST['email']) == '') {
 		$errors[] = ['title' => 'Введите Email'];
 	}
+	if (trim($_POST['message']) == '') {
+		$errors[] = ['title' => 'Введите текст сообщения'];
+	}
+
+
+
+
 
 	if (empty($errors)) {
 
@@ -51,19 +58,13 @@ if(isset($_POST['save-message'])){
 			$kaboom = explode(".",$fileName);
 			$fileExt = end($kaboom);
 
-			list($width,$height) = getimagesize($fileTmpLoc); 
-			if($width < 10 || $height < 10) {
-				$errors[] = ['title' => 'Файл не имеет размеров'];
-			}
-
-			
 
 			if($fileSize > 4194304) {
-				$errors[] = ['title' => 'Файл не может быть более 4 Мбайт'];
-			} else if (!preg_match("/\.(gif|jpg|jpeg|png|pdf|doc)$/i",$fileName)){
-				$errors[] = ['title' => 'Файл не gif|jpg|jpeg|png|pdf|doc'];
+				$errors[] = ['title' => 'Файл не может быть более 4 Мбайт. Файл не загружен'];
+			} else if (!preg_match("/\.(gif|jpg|jpeg|png|pdf|doc|txt)$/i",$fileName)){
+				$errors[] = ['title' => 'Файл не gif|jpg|jpeg|png|pdf|doc|txt. Файл не загружен'];
 				} else if ($fileErrorMsg ==1) {
-					$errors[] = ['title' => 'Неизвестная ошибка при добавлении файла'];
+					$errors[] = ['title' => 'Неизвестная ошибка при добавлении файла. Файл не загружен'];
 				}
 
 			$fileFolderLocation = ROOT.'usercontent/message/';
@@ -79,10 +80,12 @@ if(isset($_POST['save-message'])){
 				$errors[] = ['title' => 'Файл не загружен'];
 			}
 
+			if (empty($errors)) {
+
 			$message->message_file_name_original = $fileName;
 
 			$message->message_file = $db_file_name;
-
+			}
 			
 		}
 

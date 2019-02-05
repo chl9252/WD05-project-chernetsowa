@@ -102,6 +102,7 @@
 				<?php } ?>
 			</div>
 			<div class="col-4 offset-1">
+
 				<div class="title-general mb-40">Связаться со мной</div>
 					<?php	require ROOT . "templates/_parts/_errors.tpl"; ?>
 					<?php	require ROOT . "templates/_parts/_success.tpl"; ?>
@@ -115,7 +116,7 @@
 					<textarea class="textarea mb-20" name="message" placeholder="Сообщение"></textarea>
 					<section class="upload-file">
 						<h6 class="upload-file__title">Прикрепить файл</h6>
-						<p class="upload-file__description">jpg, png, pdf, doc, весом до 2Мб.</p>
+						<p class="upload-file__description">jpg, jpeg, png, pdf, doc, txt, весом до 4Мб.</p>
 						<input class="input-file" type="file" name="file" id="upload-file" data-multiple-caption="{count}" />
 						<label class="input-file-mark input-file-mark--rounded" for="upload-file">Выбрать файл</label>
 						<span>Файл не выбран</span>

@@ -9,7 +9,7 @@
 				<form action="<?=HOST?>message-delete?id=<?=$message['id']?>" method="POST">
 
 					<div class="add-post-content__name mt-40">
-						<p>Вы действительно хотите удалить сообщение от email <strong><?=$message['email']?></strong>  с id= <?=$message['id']?> ?</p>	
+						<p>Вы действительно хотите удалить сообщение от Email <strong><?=$message['email']?></strong>  с id= <?=$message['id']?> ?</p>	
 
 					</div>  
 					
