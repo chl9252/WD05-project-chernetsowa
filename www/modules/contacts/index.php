@@ -60,11 +60,11 @@ if(isset($_POST['save-message'])){
 
 
 			if($fileSize > 4194304) {
-				$errors[] = ['title' => 'Файл не может быть более 4 Мбайт. Файл не загружен'];
+				$errors[] = ['title' => 'Файл не может быть более 4 Мбайт.'];
 			} else if (!preg_match("/\.(gif|jpg|jpeg|png|pdf|doc|txt)$/i",$fileName)){
-				$errors[] = ['title' => 'Файл не gif|jpg|jpeg|png|pdf|doc|txt. Файл не загружен'];
+				$errors[] = ['title' => 'Файл не gif|jpg|jpeg|png|pdf|doc|txt.'];
 				} else if ($fileErrorMsg ==1) {
-					$errors[] = ['title' => 'Неизвестная ошибка при добавлении файла. Файл не загружен'];
+					$errors[] = ['title' => 'Неизвестная ошибка при добавлении файла.'];
 				}
 
 			$fileFolderLocation = ROOT.'usercontent/message/';
@@ -74,12 +74,14 @@ if(isset($_POST['save-message'])){
 
 			// начнем перемещать
 
-			$uploadfile = $fileFolderLocation.$db_file_name;
-			$moveResult = move_uploaded_file($fileTmpLoc,$uploadfile);
-			if($moveResult != true) {
-				$errors[] = ['title' => 'Файл не загружен'];
-			}
+			if (empty($errors)) {
 
+				$uploadfile = $fileFolderLocation.$db_file_name;
+				$moveResult = move_uploaded_file($fileTmpLoc,$uploadfile);
+				if($moveResult != true) {
+					$errors[] = ['title' => 'Файл не загружен'];
+				}
+			}
 			if (empty($errors)) {
 
 			$message->message_file_name_original = $fileName;
@@ -89,9 +91,12 @@ if(isset($_POST['save-message'])){
 			
 		}
 
-		R::store($message);
+		if (empty($errors)) {
 
-		$success[] = ['title' => 'Сообщение было успешно отправлено!'];
+			R::store($message);
+
+			$success[] = ['title' => 'Сообщение было успешно отправлено!'];
+		}
 
 //		header('Location:' . HOST . "contacts");
 //		exit();
