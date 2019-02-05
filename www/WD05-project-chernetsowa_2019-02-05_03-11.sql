@@ -1,4 +1,4 @@
-#SKD101|WD05-project-chernetsowa|5|2019.02.01 23:30:44|24|1|3|7|5|8
+#SKD101|WD05-project-chernetsowa|6|2019.02.05 03:11:17|43|1|3|7|1|23|8
 
 DROP TABLE IF EXISTS `about`;
 CREATE TABLE `about` (
@@ -43,6 +43,25 @@ INSERT INTO `comments` VALUES
 (5, 12, 2, 'Первым о начале сборки iPhone в Индии с начала 2019 г. сообщало издание The Hindu, вопрос обсуждался 25 декабря на заседании кабинета министров страны. При этом в правительстве не указывали, какие именно модели', '2019-02-01 23:10:54'),
 (6, 9, 4, 'насколько я понимаю, был в том, чтобы убедить представителей НАТО в порядке дисциплины. Французы, немцы, британцы, ', '2019-02-01 23:18:54'),
 (7, 19, 4, 'Была там в прошлом году', '2019-02-01 23:20:04');
+
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(191) DEFAULT NULL,
+  `phone` double DEFAULT NULL,
+  `address` varchar(191) DEFAULT NULL,
+  `firstname` varchar(191) DEFAULT NULL,
+  `lastname` varchar(191) DEFAULT NULL,
+  `skype` varchar(191) DEFAULT NULL,
+  `vkontakte` varchar(191) DEFAULT NULL,
+  `facebook` varchar(191) DEFAULT NULL,
+  `github` varchar(191) DEFAULT NULL,
+  `twitter` varchar(191) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 /*!40101 DEFAULT CHARSET=utf8 */;
+
+INSERT INTO `contacts` VALUES
+(1, 'chl9252@mail.ru', '79612111143', 'Россия Тюмень', 'Людмила', 'Чернецова', 'chl9252', 'https://vk.com/id201044984', 'https://www.facebook.com/profile.php?id=100004799803125', 'https://github.com/chl9252', '');
 
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
