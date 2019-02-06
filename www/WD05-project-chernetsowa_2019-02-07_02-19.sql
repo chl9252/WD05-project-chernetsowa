@@ -1,15 +1,17 @@
-#SKD101|WD05-project-chernetsowa|7|2019.02.06 01:01:38|48|1|3|7|1|5|23|8
+#SKD101|WD05-project-chernetsowa|9|2019.02.07 02:19:17|52|1|3|7|1|2|6|23|1|8
 
 DROP TABLE IF EXISTS `about`;
 CREATE TABLE `about` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `date_time` datetime DEFAULT NULL,
+  `photo` varchar(191) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 /*!40101 DEFAULT CHARSET=utf8 */;
 
 INSERT INTO `about` VALUES
-(1, 'Егор Казаков', 'Я веб разработчик.');
+(1, 'Емельян Казаков', '<p>Я веб разработчик из Казани. Мне 26 лет.<br />\r\nЗанимаюсь разработкой современных сайтов и приложенийю Мне нравится делать интересные и современные проекты.&nbsp;<br />\r\nЭтот сайт я сделал в рамкаобучения в школе онлайн обучения WebCademy. Чуть позже освежу в нем свой контент. А пока посмотрите, как тут все классно и красиво!</p>\r\n\r\n<h2><strong>Что я умею</strong></h2>\r\n\r\n<p>Меня привлекает Frontend разработка, это не только моя работа, но и хобби. Также знаком и могу решать несложные задачи на Backend. Знаком и использую современный workflow, работаю с репозиториями git и сборкой проекта на gulp.</p>\r\n', '2019-02-06 19:57:30', '45436401.jpg');
 
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
@@ -63,6 +65,20 @@ CREATE TABLE `contacts` (
 INSERT INTO `contacts` VALUES
 (1, 'chl9252@mail.ru', '79612111143', 'Россия Тюмень', 'Людмила', 'Чернецова', 'chl9252', 'https://vk.com/id201044984', 'https://www.facebook.com/profile.php?id=100004799803125', 'https://github.com/chl9252', '');
 
+DROP TABLE IF EXISTS `jobs`;
+CREATE TABLE `jobs` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `period` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  `title` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  `description` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 /*!40101 DEFAULT CHARSET=utf8mb4 */ /*!40101 COLLATE=utf8mb4_unicode_ci */;
+
+INSERT INTO `jobs` VALUES
+(5, 'Февраль 2018 - по настоящее времяjk0989', 'Облачный атлас5555555555555', 'Описание работы, должностные обязанности, достигнутые результаты', '2019-02-07 00:08:39'),
+(7, 'Февраль 2018 - по настоящее времяjk0989', 'Облачный атлас5555555555555', 'аботы в команде Вконтакте. Работал в команде над обновление сервиса Музыка, работа над видео разделом. Создание видеоплеера. Создание кроссбраузерных компонентов.', '2019-02-07 00:10:21');
+
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -73,14 +89,15 @@ CREATE TABLE `messages` (
   `message_file_name_original` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
   `message_file` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 /*!40101 DEFAULT CHARSET=utf8mb4 */ /*!40101 COLLATE=utf8mb4_unicode_ci */;
+) ENGINE=InnoDB AUTO_INCREMENT=12 /*!40101 DEFAULT CHARSET=utf8mb4 */ /*!40101 COLLATE=utf8mb4_unicode_ci */;
 
 INSERT INTO `messages` VALUES
 (5, 'mail3@mail.com', 'Марина', 'После решения Foxconn о расширении своей деятельности за пределы Китая, другой контрактный производитель гаджетов Apple теперь планирует сделать то же самое. Pegatron создаст производственные мощности в трех новых странах: Индии, Индонезии и Вьетнаме, сообщает Financial Times. В настоящее время на долю Pegatron приходится около 30% сборочных заказов Apple. До сих пор компания почти полностью полагалась на Китай, но теперь она намерена изменить ситуацию за ', '2019-02-05 19:04:12', 'BBSQ51D.jpg', '48921813.jpg'),
 (6, 'mail2@mail.com', 'Людмила', 'счет экспансии в Индонезию, Вьетнам и Индию. Президент Pegatron Си-Джанг Ляо отметил, что пресс-служба компании скоро сообщит более подробную информацию о расширении. Он также добавил, что темпы роста производства будут зависеть от продолжающейся торговой войны между США и Китаем. Возможно, это решение Pegatron связано с тем, что Apple планирует начать производство последних моделей iPhone в Индии. Кроме того, продажи смартфонов и бытовой электроники в Китае в последнее время замедлились, что заставило многие компании сосредоточиться на других крупных рынках, например Индии. Руководство Pegatron в своем заявлении не касалось Apple, но трудно игнорировать связь между планами Pegatron и Foxconn и сообщения о том, что сборка флагманских моделей iPhone скоро начнется в Индии. Кроме того, китайский рынок смартфонов и бытовой электроники в последнее время замедлился, что заставило компании сосредоточиться на других крупных рынках, таких как Индия. В настоящее время Foxconn имеет заводы как в Индии, так и во Вьетнаме, но пока они не задействованы в производстве устройств Apple. Ранее стало известно, что Foxconn Technology Group также изучает возможность расширения присутствия в Индии, чтобы снизить зависимость от Китая и обойти пошлины, которые могут ввести США, а также помочь Apple в выполнении требований индийских регуляторов по поводу размещения производства в стране. По данным ресурса The Wall Street Journal, в следующем месяце после завершения празднования китайского Нового года в Индию приедут руководители Foxconn, включая главу компании Терри Гоу, для обсуждения дальнейших планов. Foxconn занимается сборкой устройств для различных ', '2019-02-05 19:04:52', NULL, NULL),
 (7, 'mail2@mail.com', 'Марина', '', '2019-02-05 19:22:34', NULL, NULL),
 (8, 'mail2@mail.com', 'Марина', '', '2019-02-05 23:41:31', '5_shagov_dlya_vosstan_svyazi_s_rodom.pdf', '86008911.pdf'),
-(10, 'mail2@mail.com', 'Марина', 'вяпвп', '2019-02-06 00:02:17', 'тесто для пирожков.txt', '97165527.txt');
+(10, 'mail2@mail.com', 'Марина', 'вяпвп', '2019-02-06 00:02:17', 'тесто для пирожков.txt', '97165527.txt'),
+(11, 'mail2@mail.com', 'Емельян Казаков', 'm,b,b,', '2019-02-06 23:52:56', NULL, NULL);
 
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
@@ -110,6 +127,26 @@ INSERT INTO `posts` VALUES
 (21, 'new new new222', '<p>jkjj hkhkh klhkllk lkklhlk lkhklh lkhlkh&nbsp;</p>\r\n\r\n<p>kjgjkh klhklh lkhlk lkhklh hlkhkj</p>\r\n', 2, '2019-01-31 23:30:45', '61781311.jpg', 2, '2019-02-01 01:01:34'),
 (22, 'ggggggggggggggggggggggggg', '<p>gggggggg gggggggggggggg ggggggggggg ggggggggggggggg ggggggggggggggggggg ggggggggggggggggggggggggggg ggggggggg</p>\r\n', 2, '2019-02-01 02:08:28', '43947753.jpg', 2, '2019-02-01 14:13:09'),
 (23, 'hhhhhhhhhhhhhhhhhhh', '<p>hhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhh</p>\r\n', 2, '2019-02-01 02:13:03', NULL, 1, NULL);
+
+DROP TABLE IF EXISTS `skills`;
+CREATE TABLE `skills` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `html` int(11) unsigned DEFAULT NULL,
+  `css` int(11) unsigned DEFAULT NULL,
+  `js` int(11) unsigned DEFAULT NULL,
+  `jquery` int(11) unsigned DEFAULT NULL,
+  `php` int(11) unsigned DEFAULT NULL,
+  `mysql` int(11) unsigned DEFAULT NULL,
+  `git` int(11) unsigned DEFAULT NULL,
+  `gulp` int(11) unsigned DEFAULT NULL,
+  `npm` int(11) unsigned DEFAULT NULL,
+  `webpack` int(11) unsigned DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 /*!40101 DEFAULT CHARSET=utf8mb4 */ /*!40101 COLLATE=utf8mb4_unicode_ci */;
+
+INSERT INTO `skills` VALUES
+(1, 75, 75, 15, 50, 40, 30, 50, 30, 40, 10, '2019-02-07 02:04:25');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (

@@ -111,9 +111,9 @@
 								<div id="notify-email" class="notify notification__title notification--error mb-20 hidden">Введите email</div>
 								<div id="notify-email2" class="notify notification__title notification--error mb-20 hidden">Неверный формат email</div>
 						</div>
-					<input class="input" name="name" type="text" placeholder="Введите имя" />
-					<input class="input" name="email" id="message-email" type="email" placeholder="Email" />
-					<textarea class="textarea mb-20" name="message" placeholder="Сообщение"></textarea>
+					<input class="input" name="name" type="text" placeholder="Введите имя"  value="<?=@$_POST['name']?>"/>
+					<input class="input" name="email" id="message-email" type="email" placeholder="Email" value="<?=@$_POST['email']?>" />
+					<textarea class="textarea mb-20" name="message" placeholder="Сообщение"><?=@$_POST['message']?></textarea>
 					<section class="upload-file">
 						<h6 class="upload-file__title">Прикрепить файл</h6>
 						<p class="upload-file__description">jpg, jpeg, png, pdf, doc, txt, весом до 4Мб.</p>

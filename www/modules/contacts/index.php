@@ -96,10 +96,11 @@ if(isset($_POST['save-message'])){
 			R::store($message);
 
 			$success[] = ['title' => 'Сообщение было успешно отправлено!'];
+		header('Location:' . HOST . "contacts?result=messageCreated");
+		exit();	
 		}
 
-//		header('Location:' . HOST . "contacts");
-//		exit();
+
 
 	}
 
