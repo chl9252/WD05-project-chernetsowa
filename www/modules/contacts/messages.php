@@ -1,4 +1,4 @@
-//<?php
+<?php
 
 //if (!isAdmin()) {
 //	header("Location: " . HOST);
@@ -8,7 +8,7 @@
 $title = "Сообщения";
 
 
-//$cats = R::find('categories', 'ORDER BY cat_title ASC');
+$messages = R::find('messages', 'ORDER BY id DESC');
 
 ob_start();
 include ROOT . "templates/_parts/_header.tpl";

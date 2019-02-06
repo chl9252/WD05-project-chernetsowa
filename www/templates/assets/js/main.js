@@ -486,6 +486,192 @@ $(document).ready(function() {
 
 	checkNewpassword.init();
 
+
+		//-----------------------------------------------
+	
+	var checkContacts = (function(){
+
+		// Переменные модуля
+
+		var _form = $('#contacts-form'),
+			_inputEmail = _form.find('#contactEmail'),
+			_notifyEmail = _form.find('#notify-email'),
+			_notifyEmail2 = _form.find('#notify-email2'),
+			_pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+
+		_inputEmail.on('focus', function(){
+		
+			var item1 = $('#notify1-php');
+			if($("div").index(item1)>0){
+				$('#notify1-php').addClass('hidden');
+			};
+			var item2 = $('#notify2-php');
+			if($("div").index(item2)>0){
+				$('#notify2-php').addClass('hidden');
+			};
+			var item3 = $('#notify3-php');
+			if($("div").index(item3)>0){
+				$('#notify3-php').addClass('hidden');
+			};
+		})
+
+		// Метод инициализации (запуска) модуля
+
+		var init = function(){
+			_setupListeners();
+
+		};
+
+		// Метод прослушки событий
+
+		var _setupListeners = function(){
+			_form.on('submit', function(event){
+				_formValidate(event);
+
+			});
+		};
+
+		// Приватные методы
+
+		var _formValidate = function(event){
+			
+			valid = true;
+
+			// proverka
+
+			// email empty
+
+			if(_inputEmail.val().trim().length === 0) {
+				event.preventDefault();
+				valid = false;
+				_notifyEmail.fadeIn(700);
+
+				_inputEmail.on('focus', function(){
+					_notifyEmail.fadeOut(700);
+					_form.trigger("reset");
+				})
+			};
+
+			// email invalid
+
+			if (valid) {
+				if (!_pattern.test(_inputEmail.val())) {
+					event.preventDefault();
+					_notifyEmail2.fadeIn(700);
+					valid = false;
+					_inputEmail.on('focus', function(){
+						_notifyEmail2.fadeOut(700);
+
+						})
+					};
+				};
+
+			//password empty
+			
+		}
+
+		return {
+			init
+		};
+
+
+	}());
+
+	checkContacts.init();
+
+	//-----------------------------------------------
+	
+	var checkMessage = (function(){
+
+		// Переменные модуля
+
+		var _form = $('#message-form'),
+			_inputEmail = _form.find('#message-email'),
+			_notifyEmail = _form.find('#notify-email'),
+			_notifyEmail2 = _form.find('#notify-email2'),
+			_pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+
+		_inputEmail.on('focus', function(){
+		
+			var item1 = $('#notify1-php');
+			if($("div").index(item1)>0){
+				$('#notify1-php').addClass('hidden');
+			};
+			var item2 = $('#notify2-php');
+			if($("div").index(item2)>0){
+				$('#notify2-php').addClass('hidden');
+			};
+			var item3 = $('#notify3-php');
+			if($("div").index(item3)>0){
+				$('#notify3-php').addClass('hidden');
+			};
+		})
+
+		// Метод инициализации (запуска) модуля
+
+		var init = function(){
+			_setupListeners();
+
+		};
+
+		// Метод прослушки событий
+
+		var _setupListeners = function(){
+			_form.on('submit', function(event){
+				_formValidate(event);
+
+			});
+		};
+
+		// Приватные методы
+
+		var _formValidate = function(event){
+			
+			valid = true;
+
+			// proverka
+
+			// email empty
+
+			if(_inputEmail.val().trim().length === 0) {
+				event.preventDefault();
+				valid = false;
+				_notifyEmail.fadeIn(700);
+
+				_inputEmail.on('focus', function(){
+					_notifyEmail.fadeOut(700);
+//				_form.trigger("reset");
+				})
+			};
+
+			// email invalid
+
+			if (valid) {
+				if (!_pattern.test(_inputEmail.val())) {
+					event.preventDefault();
+					_notifyEmail2.fadeIn(700);
+					valid = false;
+					_inputEmail.on('focus', function(){
+						_notifyEmail2.fadeOut(700);
+
+						})
+					};
+				};
+
+			//password empty
+			
+		};
+
+		return {
+			init
+		};
+
+
+	}());
+
+	checkMessage.init();
+//-----------------------------------
+
 	setTimeout(function(){
 		$('[data-notify-hide]').slideUp(400);
 	},2000);

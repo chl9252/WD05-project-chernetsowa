@@ -89,6 +89,9 @@ switch ( $uri[0]) {
 	case 'messages':
 		require ROOT . "modules/contacts/messages.php"; //message
 		break;
+		case 'message-delete':
+		require ROOT . "modules/contacts/message-delete.php"; //message del
+		break;
 // --------------	
 	case 'portfolio':
 		require ROOT . "modules/portfolio/index.php";
