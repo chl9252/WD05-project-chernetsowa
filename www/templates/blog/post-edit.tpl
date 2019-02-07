@@ -26,11 +26,7 @@
 					<div class="add-post-content__img mt-30">
 						<section class="upload-file">
 							<h6 class="upload-file__title">Изображение</h6>
-
-
-
-
-							
+						
 
 
 							<p class="upload-file__description">изображение и параметры 945px и больше, высота от 400px</p>

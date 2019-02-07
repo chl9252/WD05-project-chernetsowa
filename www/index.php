@@ -44,12 +44,6 @@ switch ( $uri[0]) {
 		require ROOT . "modules/profile/edit.php";
 		break;
 
-	case 'about':
-		require ROOT . "modules/about/index.php";
-		break;
-	case 'contacts':
-		require ROOT . "modules/contacts/index.php";
-		break;
 // -------------- Blog ------------------
 	case 'blog':
 		require ROOT . "modules/blog/index.php";
@@ -68,29 +62,45 @@ switch ( $uri[0]) {
 		break;
 // -------------- Categories ------------------	
 	case 'blog/categories':
-		require ROOT . "modules/categories/all.php"; //all
+		require ROOT . "modules/categories/all.php";
 		break;
 	case 'blog/category-new':
-		require ROOT . "modules/categories/new.php"; //add
+		require ROOT . "modules/categories/new.php";
 		break;
 	case 'blog/category-edit':
-		require ROOT . "modules/categories/edit.php"; //edit
+		require ROOT . "modules/categories/edit.php";
 		break;	
 	case 'blog/category-delete':
-		require ROOT . "modules/categories/delete.php"; //delete
+		require ROOT . "modules/categories/delete.php";
 		break;
 // -------------- Contacts ------------------	
 	case 'contacts':
-		require ROOT . "modules/contacts/index.php"; //all
+		require ROOT . "modules/contacts/index.php";
 		break;
 	case 'contacts-edit':
-		require ROOT . "modules/contacts/edit.php"; //edit
+		require ROOT . "modules/contacts/edit.php";
 		break;
 	case 'messages':
-		require ROOT . "modules/contacts/messages.php"; //message
+		require ROOT . "modules/contacts/messages.php";
 		break;
 		case 'message-delete':
-		require ROOT . "modules/contacts/message-delete.php"; //message del
+		require ROOT . "modules/contacts/message-delete.php";
+		break;
+// -------------- About me ------------------	
+	case 'about':
+		require ROOT . "modules/about/index.php";
+		break;
+	case 'edit-text':
+		require ROOT . "modules/about/edit-text.php";
+		break;
+	case 'edit-skills':
+		require ROOT . "modules/about/edit-skills.php";
+		break;
+	case 'edit-jobs':
+		require ROOT . "modules/about/edit-jobs.php";
+		break;
+	case 'delete-jobs':
+		require ROOT . "modules/about/delete-jobs.php";
 		break;
 // --------------	
 	case 'portfolio':
