@@ -102,6 +102,22 @@ switch ( $uri[0]) {
 	case 'delete-jobs':
 		require ROOT . "modules/about/delete-jobs.php";
 		break;
+// -------------- Works ------------------
+	case 'portfolio':
+		require ROOT . "modules/portfolio/index.php";
+		break;
+	case 'portfolio/work-new':
+		require ROOT . "modules/portfolio/work-new.php";
+		break;
+	case 'portfolio/work-edit':
+		require ROOT . "modules/portfolio/work-edit.php";
+		break;
+	case 'portfolio/work-delete':
+		require ROOT . "modules/portfolio/work-delete.php";
+		break;
+	case 'portfolio/work':
+		require ROOT . "modules/portfolio/work.php";
+		break;
 // --------------	
 	case 'portfolio':
 		require ROOT . "modules/portfolio/index.php";
