@@ -13,23 +13,23 @@
 		</div>
 
 
-		<div class="line"></div>
-		<div class="new-works container section pl-0 pr-0">
+	
+		<div class="blog-entries container pl-0 pr-0">
 			<div class="row">
 				<div class="col-md-12">
 					<h2 class="title-2 title-1--weight mb-40"> Новые <a class="title-1--underline postlink" href="<?=HOST?>portfolio">работы</a></h2>
 				</div>
 			</div>
+	
+
+			<div class="row ml-0 mr-0 mb-20">
+					<?php foreach ($works as $work) { ?>
+					<?php include ROOT . "templates/portfolio/_portfolio-card.tpl" ?>
+
+					<?php 	}	?>
+
+			</div>
 		</div>
-
-		<div class="row ml-0 mr-0 mb-20">
-				<?php foreach ($works as $work) { ?>
-				<?php include ROOT . "templates/portfolio/_portfolio-card.tpl" ?>
-
-				<?php 	}	?>
-
-		</div>
-
 
 		<div class="blog-entries container pl-0 pr-0">
 			<div class="row">

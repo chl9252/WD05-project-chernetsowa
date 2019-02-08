@@ -1,17 +1,21 @@
 
 <div class="container pt-55 pb-80">
 		<div class="row">
+
 			<?php if (isAdmin()) { ?>
 			<div class="col-12 clearfix mb-30">
 				<a class="button float-right" href="<?=HOST?>messages">Сообщения</a>
 				<a class="button button-edit float-right mr-20" href="<?=HOST?>contacts-edit">Редактировать</a>
 			</div>
 			<?php } ?>
+		
 			<div class="col-5">
-					<?php if ( isset($_GET['result']) ) { ?>
-	<?php include ROOT . "templates/contacts/_result.tpl" ?>
-	<?php }	?>
+
 				<h1 class="title-general mb-30">Контакты</h1>
+	<?php if ( isset($_GET['result']) ) { ?>
+	<?php include ROOT . "templates/contacts/_result-contact.tpl" ?>
+	<?php }	?>
+
 				<?php if($contacts['firstname'] != '') { ?>
 				<div class="row mb-15">
 					<div class="col-6 contacts-category">
@@ -107,6 +111,9 @@
 			<div class="col-4 offset-1">
 
 				<div class="title-general mb-40">Связаться со мной</div>
+	<?php if ( isset($_GET['result']) ) { ?>
+	<?php include ROOT . "templates/contacts/_result.tpl" ?>
+	<?php }	?>	
 					<?php	require ROOT . "templates/_parts/_errors.tpl"; ?>
 					<?php	require ROOT . "templates/_parts/_success.tpl"; ?>
 				<form class="feedback-form" id="message-form" action="<?=HOST?>contacts" method="POST" enctype="multipart/form-data" novalidate>
