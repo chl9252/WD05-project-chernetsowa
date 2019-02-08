@@ -7,6 +7,14 @@ $sqlWork = 'SELECT works.id, works.title, works.text, works.result, works.date_t
 
 	$work = $work[0];
 
+$worksId = R::getCol('SELECT id FROM works');
+foreach ($worksId as $index => $id) {
+	if ( $id == $work['id']) {
+		@$nextId = $worksId[$index + 1];
+		@$prevId = $worksId[$index - 1];
+		break;
+	}
+}
 
 $title = $work['name'];
 

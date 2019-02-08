@@ -32,7 +32,16 @@
 					</div>
 					<?php } ?>
 					<div class="post-content mb-25"><?=$post['text']?></div>
-					<div class="post-buttons-nav mb-25"><a class="button button-previous" href="#">Назад <span class="button__icon button__icon--mright float-left"><i class="mr-0 fas fa-arrow-left"></i></span></a><a class="button button-next" href="#">Вперед <span class="button__icon"><i class="mr-0 fas fa-arrow-right"></i></span></a></div>
+					<div class="post-buttons-nav mb-25">
+						<?php if( $nextId != '') { ?>
+						<a class="button button-previous" href="<?=HOST?>blog/post?id=<?=$nextId?>">Назад <span class="button__icon button__icon--mright float-left"><i class="mr-0 fas fa-arrow-left"></i></span></a>
+						<?php } else { ?>
+						  <div></div>
+						 <?php } ?>
+						<?php if( $prevId != '') { ?>
+						<a class="button button-next" href="<?=HOST?>blog/post?id=<?=$prevId?>">Вперед <span class="button__icon"><i class="mr-0 fas fa-arrow-right"></i></span></a>
+						<?php } ?>
+					</div>
 				</div>
 
 				<div class="user-comments-wrapper mb-25" id="comments">
