@@ -1,4 +1,4 @@
-#SKD101|WD05-project-chernetsowa|9|2019.02.07 02:19:17|52|1|3|7|1|2|6|23|1|8
+#SKD101|WD05-project-chernetsowa|10|2019.02.08 03:16:27|39|1|3|7|1|2|6|5|1|8|5
 
 DROP TABLE IF EXISTS `about`;
 CREATE TABLE `about` (
@@ -125,7 +125,7 @@ INSERT INTO `posts` VALUES
 (19, 'ghkghkg', '<p>fyhtf fydr drydry drydr</p>\r\n', 2, NULL, '80202636.jpg', 2, '2019-02-01 01:00:47'),
 (20, 'proba date reg', 'dfydf drtrte tet wet weter 55555555555555555', 2, '2019-01-31 21:04:49', '40662841.jpg', 1, '2019-01-31 22:52:52'),
 (21, 'new new new222', '<p>jkjj hkhkh klhkllk lkklhlk lkhklh lkhlkh&nbsp;</p>\r\n\r\n<p>kjgjkh klhklh lkhlk lkhklh hlkhkj</p>\r\n', 2, '2019-01-31 23:30:45', '61781311.jpg', 2, '2019-02-01 01:01:34'),
-(22, 'ggggggggggggggggggggggggg', '<p>gggggggg gggggggggggggg ggggggggggg ggggggggggggggg ggggggggggggggggggg ggggggggggggggggggggggggggg ggggggggg</p>\r\n', 2, '2019-02-01 02:08:28', '43947753.jpg', 2, '2019-02-01 14:13:09'),
+(22, 'ggggggggggggggggggggggggg', '<p>gggggggg gggggggggggggg ggggggggggg ggggggggggggggg ggggggggggggggggggg ggggggggggggggggggggggggggg ggggggggg</p>\r\n', 2, '2019-02-01 02:08:28', '43947753.jpg', 2, '2019-02-07 18:49:12'),
 (23, 'hhhhhhhhhhhhhhhhhhh', '<p>hhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhh</p>\r\n', 2, '2019-02-01 02:13:03', NULL, 1, NULL);
 
 DROP TABLE IF EXISTS `skills`;
@@ -174,4 +174,27 @@ INSERT INTO `users` VALUES
 (7, 'chl9252@mail.ru', '$2y$10$S5X76CZJTDLHdg2C5bSurO0AyNPNVIITvT/RqjI7mGJkgoZwD0uIq', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (8, 'mail@mail.com', '$2y$10$xT95H1o7EYlaC6WPD.esz.Ffj/a5y2CZknnskfgaz8Gh0e3TFnBiG', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9, 'mail12@mail.com', '$2y$10$MXPukcUyT1cY09/VBnMJUO.Chu6n5Nl6LwbQAqNFlSsGbUDlmKOtO', 'user', 'Борис', 'Борисов', 'Ебург', 'Россия', '49723815.jpg', '49723815.jpg', NULL, NULL);
+
+DROP TABLE IF EXISTS `works`;
+CREATE TABLE `works` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  `text` text /*!40101 COLLATE utf8mb4_unicode_ci */,
+  `result` text /*!40101 COLLATE utf8mb4_unicode_ci */,
+  `technologies` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  `project` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  `github` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  `author_id` int(11) unsigned DEFAULT NULL,
+  `date_time` datetime DEFAULT NULL,
+  `workimg` varchar(191) /*!40101 COLLATE utf8mb4_unicode_ci */ DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_foreignkey_works_author` (`author_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 /*!40101 DEFAULT CHARSET=utf8mb4 */ /*!40101 COLLATE=utf8mb4_unicode_ci */;
+
+INSERT INTO `works` VALUES
+(11, 'Поставщики Apple наращивают экспансию', '<p>После решения Foxconn о расширении своей деятельности за пределы Китая, другой контрактный производитель гаджетов Apple теперь планирует сделать то же самое. Pegatron создаст производственные мощности в трех новых странах: Индии, Индонезии и Вьетнаме, сообщает Financial Times. В настоящее время на долю Pegatron приходится около 30% сборочных заказов Apple. До сих пор компания почти полностью полагалась на Китай, но теперь она&nbsp;</p>\r\n', 'намерена изменить ситуацию за счет экспансии в Индонезию, Вьетнам и Индию. Президент Pegatron Си-Джанг Ляо отметил, что пресс-служба компании скоро сообщит более подробную информацию о расширении. Он также добавил, что темпы роста производства будут зависеть от продолжающейся торговой войны между США и Китаем. ', 'php html css jquery', 'https://vk.com/id201044984', 'https://github.com/chl9252', 2, '2019-02-07 23:32:12', '17454223.jpg'),
+(12, 'Как следует из материалов компании, совет покинул Жан-Пьер Тома', '<p>Возможно, это решение Pegatron связано с тем, что Apple планирует начать производство последних моделей iPhone в Индии. Кроме того, продажи смартфонов и бытовой электроники в Китае в последнее время замедлились, что заставило многие компании сосредоточиться на других крупных рынках, например Индии. Руководство Pegatron в своем заявлении не касалось Apple, но трудно игнорировать связь между планами Pegatron и Foxconn и&nbsp;</p>\r\n', 'Pegatron в своем заявлении не касалось Apple, но трудно игнорировать связь между планами Pegatron и Foxconn и сообщения о том, что сборка флагманских моделей iPhone скоро начнется в Индии. Кроме того, китайский рынок ', 'html5 css3 js php', 'https://vk.com/id201044984', 'https://github.com/chl9252', 2, '2019-02-07 23:33:39', '48248901.jpg'),
+(13, 'В настоящее время Foxconn имеет заводы как в Индии, так и во Вьетнаме', '<p>но пока они не задействованы в производстве устройств Apple. Ранее стало известно, что Foxconn Technology Group также изучает возможность расширения присутствия в Индии, чтобы снизить зависимость от Китая и обойти пошлины, которые могут ввести США, а также помочь Apple в выполнении требований индийских регуляторов по&nbsp;</p>\r\n', 'поводу размещения производства в стране. По данным ресурса The Wall Street Journal, в следующем месяце после завершения празднования китайского Нового года в Индию приедут руководители Foxconn, включая главу ', 'для обсуждения дальнейших планов', 'https://vk.com/id201044984', 'https://github.com/chl9252', 2, '2019-02-07 23:35:05', '54123840.jpg'),
+(14, 'компаний, используя для некоторых операций заводы в Индии. Перенос', '<p>зависимость Foxconn от Китая и потенциально также уменьшит влияние любой торговой войны между США и Китаем на сотрудничество с Apple. По аналогичным причинам Foxconn также, как сообщается, рассматривает возможность переноса части производства во Вьетнам. По данным агентства, Foxconn инвестирует $356 млн в мощности для сборки телефонов Apple. Для этого будет расширен завод в городе Шриперамбудур (штат Тамилнад),&nbsp;</p>\r\n', 'на котором подрядчик уже производит телефоны для китайской компании Xiaomi. Подобное расширение может создать около 25 тыс. новых рабочих мест, отмечает агентство. Предполагается, что на заводе в Шриперамбудуре ', 'что на заводе Шриперамбудуре ', 'https://vk.com/id201044984', 'https://github.com/chl9252', 2, '2019-02-07 23:36:34', '63692932.jpg'),
+(15, '111111111111111111', '<p>2222222222222222</p>\r\n', '', '', '', '', 2, '2019-02-08 00:40:08', NULL);
 
