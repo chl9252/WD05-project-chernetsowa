@@ -3,7 +3,7 @@
 	<div class="row m-0">
 		<div class="col-10 offset-1 p-0">
 			<div class="add-post-content">
-				<h1 class="title-general mt-0 mb-0">Создать новую категорию</h1>
+				<h1 class="title-general mt-0 mb-10">Добавить новую категорию</h1>
 					<?php	require ROOT . "templates/_parts/_errors.tpl"; ?>
 				<form action="<?=HOST?>blog/category-new" method="POST">
 					<div class="add-post-content__name mt-40">

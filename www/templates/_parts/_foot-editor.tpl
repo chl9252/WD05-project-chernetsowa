@@ -10,6 +10,8 @@
 	<script>
 		document.addEventListener('DOMContentLoaded',function(){
 				CKEDITOR.replace('ckEditor1');
+				CKEDITOR.replace('ckEditor2');
+				CKEDITOR.replace('ckEditor3');
 			});
 	</script>
 </body>

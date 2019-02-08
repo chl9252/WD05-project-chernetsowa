@@ -23,15 +23,18 @@
 							</div>
 							<div class="add-works__form-item mb-30">
 								<label class="label" for="description-work">Содержание</label>
+								<p></p>
 								<textarea class="textarea" name="text" id="ckEditor1" placeholder="Введите описание"><?=@$_POST['text']?></textarea>
 							</div>
 							<div class="add-works__form-item mb-30">
 								<label class="label" for="result-work">Результат</label>
-								<textarea class="textarea" name="result" id="result-work" placeholder="Введите описание"><?=@$_POST['result']?></textarea>
+								<p></p>
+								<textarea class="textarea" name="result" id="ckEditor2" placeholder="Введите описание"><?=@$_POST['result']?></textarea>
 							</div>
 							<div class="add-works__form-item mb-30">
 								<label class="label" for="tech-for-work">Технологии</label>
-								<textarea class="textarea" name="technologies" id="tech-for-work" placeholder="Введите описание"><?=@$_POST['technologies']?></textarea>
+								<p></p>
+								<textarea class="textarea" name="technologies" id="ckEditor3" placeholder="Введите описание"><?=@$_POST['technologies']?></textarea>
 							</div>
 							<div class="row ml-0 mr-0">
 								<div class="col-3 no-paddings mr-30">

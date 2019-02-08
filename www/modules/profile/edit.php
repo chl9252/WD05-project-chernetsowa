@@ -120,7 +120,6 @@ if(isset($_POST['profile-edit'])){
 ob_start();
 include ROOT . "templates/_parts/_header.tpl";
 include ROOT . "templates/profile/profile-edit.tpl";
-include ROOT . "templates/main/main.tpl";
 $content = ob_get_contents();
 ob_end_clean();
 

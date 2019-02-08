@@ -16,15 +16,16 @@ if(isset($_POST['catEdit'])){
 	}
 	
 	if (empty($errors)) {
-		
+
+			
 		$cat->cat_title = htmlentities($_POST['cat-name']);
 		R::store($cat);
 
 		header('Location:' . HOST . "blog/categories?result=catUpdated");
 		exit();
 
-	}
-
+		}
+	
 }
 
 

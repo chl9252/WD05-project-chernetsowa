@@ -1,19 +1,7 @@
-<?php
 
-if ( isAdmin()) {
-	include ROOT . "templates/_parts/_admin-panel.tpl";
-}
-?>
 	<div class="separate-work-wrapper">
 		<div class="separate-work-header-bg mb-50">
-			<div class="logo ml-50 mb-120">
-				<div class="logo__wrapper">
-			
-					<div class="logo__img logo__img--dark mr-15"><i class="far fa-paper-plane mr-0"></i></div>
-					<div class="logo__title logo__title--dark">Digital Lifestyle</div>
-				</div>
-				<div class="logo__description logo__description--dark ml-50">Сайт IT специалиста</div>
-			</div>
+
 			<div class="container">
 
 				<div class="separate-work-head works-title">
@@ -67,32 +55,37 @@ if ( isAdmin()) {
 						<div class="separate-work-description">
 							<h3 class="title-3 mt-0 mb-20 strong">Кратко о проекте</h3>
 							<p><?=$work['text']?></p>
-							
 						</div>
+						<?php if ($work['result'] != "") { ?>
 						<div class="separate-work-result">
 							<h3 class="title-3 mb-20 mt-20 strong">Результат</h3>
 							<p><?=$work['result']?></p>
 						</div>
+						<?php } ?>
+
 					</div>
 					<div class="col-5">
+						<?php if ($work['technologies'] != "") { ?>
 						<div class="separate-work-technologies">
 							<h3 class="title-3 mb-20 mt-0 strong">Технологии</h3>
-							
-							<ul class="separate-work-technologies__list">	
-							<?php $tech = explode ( " ", trim($work['technologies']));
-
-								foreach ($tech as $i=>$y) {  ?>
-						<li class="separate-work-technologies__list-item"><?=$tech[$i]?></li>
-							<?php	} ?>
-
-							</ul>
+															
+							<p><?=$work['technologies']?></p>
+			
 						</div>
+						<?php } ?>
+
+							<?php if ($work['project'] != "") { ?>
 						<div class="separate-work-link-project mb-35">
 							<h3 class="title-3 mb-20 mt-25 strong">Ссылка на проект</h3><a class="separate-work-link-project__link" href="<?=$work['project']?>"><?=$work['project']?></a>
 						</div>
+						<?php } ?>
+
+							<?php if ($work['github'] != "") { ?>
 						<div class="separate-work-link-github">
 							<h3 class="title-3 title-3 mb-20 mt-0 strong">Код на github</h3><a class="separate-work-link-github__link" href="<?=$work['github']?>"><?=$work['github']?></a>
 						</div>
+						<?php } ?>
+
 					</div>
 				</div>
 			</div>

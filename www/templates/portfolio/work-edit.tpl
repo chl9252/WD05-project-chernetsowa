@@ -15,7 +15,7 @@ function dataFromPost($fieldName){
 				<div class="row ml-0 mr-0">
 					<div class="col-10 offset-1 pl-0 pr-0">
 						<div class="add-works__title">
-							<h1 class="title-general mt-0 mb-0">Редактировать работу</h1>
+							<h1 class="title-general mt-0 mb-10">Редактировать работу</h1>
 						</div>
 						<?php	require ROOT . "templates/_parts/_errors.tpl"; ?>
 						<form class="add-works__form mt-40" action="<?=HOST?>portfolio/work-edit?id=<?=$work['id']?>" method="POST" enctype="multipart/form-data">
@@ -40,15 +40,18 @@ function dataFromPost($fieldName){
 							</div>
 							<div class="add-works__form-item mb-30">
 								<label class="label" for="description-work">Содержание</label>
+								<p></p>
 								<textarea class="textarea" name="text" id="ckEditor1" placeholder="Введите описание"><?=dataFromPost("text");?></textarea>
 							</div>
 							<div class="add-works__form-item mb-30">
 								<label class="label" for="result-work">Результат</label>
-								<textarea class="textarea" name="result" id="result-work" placeholder="Введите описание"><?=dataFromPost("result");?></textarea>
+								<p></p>
+								<textarea class="textarea" name="result" id="ckEditor2" placeholder="Введите описание"><?=dataFromPost("result");?></textarea>
 							</div>
 							<div class="add-works__form-item mb-30">
 								<label class="label" for="tech-for-work">Технологии</label>
-								<textarea class="textarea" name="technologies" id="tech-for-work" placeholder="Введите описание"><?=dataFromPost("technologies");?></textarea>
+								<p></p>
+								<textarea class="textarea" name="technologies"  id="ckEditor3" placeholder="Введите описание"><?=dataFromPost("technologies");?></textarea>
 							</div>
 							<div class="row ml-0 mr-0">
 								<div class="col-3 no-paddings mr-30">

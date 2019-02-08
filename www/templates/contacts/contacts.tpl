@@ -8,6 +8,9 @@
 			</div>
 			<?php } ?>
 			<div class="col-5">
+					<?php if ( isset($_GET['result']) ) { ?>
+	<?php include ROOT . "templates/contacts/_result.tpl" ?>
+	<?php }	?>
 				<h1 class="title-general mb-30">Контакты</h1>
 				<?php if($contacts['firstname'] != '') { ?>
 				<div class="row mb-15">

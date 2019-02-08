@@ -10,43 +10,33 @@
 							<div class="user-profile__avatar">
 								<div class="avatar">
 										<?php
-									if ( $_SESSION['logged_user']['avatar'] != "" ) { ?>
-									<img src="<?=HOST?>usercontent/avatar/full/<?=$currentUser->avatar?>" alt="<?=$currentUser->name?> <?=$currentUser->lastname?>" />
+									if ( $user['avatar'] != "" ) { ?>
+									<img src="<?=HOST?>usercontent/avatar/full/<?=$user->avatar?>" alt="<?=$currentUser->name?> <?=$currentUser->lastname?>" />
 									<?php	} ?>
 								</div>
 							</div>
 							
 							<div class="user-profile__description"><span>Имя и фамилия</span>
-								<p><?=$currentUser->name?> <?=$currentUser->lastname?></p><span>Email</span>
-								<p><?=$currentUser->email?></p><span>Страна, Город</span>
-								<p><?=$currentUser->country?> <?=$currentUser->city?></p>
+								<p><?=$user->name?> <?=$user->lastname?></p><span>Email</span>
+								<p><?=$user->email?></p><span>Страна, Город</span>
+								<p><?=$user->country?> <?=$user->city?></p>
 							</div>
 						</div>
 						
-												
+
+
+<?php if ( count($comments) > 0) { ?>
 						<h2 class="title-2 title-2--color mt-0 mb-25">Комментарии пользователя</h2>
 						<div class="user-profile-comments">
-							<div class="user-comment">
-								<div class="user-comment-profile"><a class="mr-20" href="#!" target="_blank"><span class="user-comment__article-title">Поездка в LA</span></a><span class="user-comment__date"><i class="far fa-clock icon--mr"></i>05 Мая 2017 года в 15:45</span>
-									<div class="user-comment__text-profile">
-										<p>Замечательный парк, обязательно отправлюсь туда этим летом. </p>
-									</div>
-								</div>
-							</div>
-							<div class="user-comment">
-								<div class="user-comment-profile"><a class="mr-20" href="#!" target="_blank"><span class="user-comment__article-title">Ноутбук для веб-разработчика</span></a><span class="user-comment__date"><i class="far fa-clock icon--mr"></i>15 Мая 2017 года в 10:02</span>
-									<div class="user-comment__text-profile">
-										<p>Замечательный парк, обязательно отправлюсь туда этим летом. </p>
-									</div>
-								</div>
-							</div>
-							<div class="user-comment">
-								<div class="user-comment-profile"><a class="mr-20" href="#!" target="_blank"><span class="user-comment__article-title">Настройка Sublime</span></a><span class="user-comment__date"><i class="far fa-clock icon--mr"></i>12 Мая 2017 года в 20:39</span>
-									<div class="user-comment__text-profile">
-										<p>Замечательный парк, обязательно отправлюсь туда этим летом. </p>
-									</div>
-								</div>
-							</div>
+																	
+						<?php foreach ($comments as $comment) { ?>
+
+							<?php include ROOT . "templates/profile/_comment-card.tpl"; ?>
+
+						<?php }	?>
+					<?php  } ?>
+
+
 						</div>
 					</div>
 				</div>

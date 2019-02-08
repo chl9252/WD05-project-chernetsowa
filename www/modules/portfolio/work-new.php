@@ -26,8 +26,8 @@ if(isset($_POST['workNew'])){
 		$work->title = htmlentities($_POST['title']);
 //		$work->cat = htmlentities($_POST['work-cat']);
 		$work->text = $_POST['text'];
-		$work->result = htmlentities($_POST['result']);
-		$work->technologies = htmlentities($_POST['technologies']);
+		$work->result = $_POST['result'];
+		$work->technologies = $_POST['technologies'];
 		$work->project = htmlentities($_POST['project']);
 		$work->github = htmlentities($_POST['github']);
 		$work->authorId = $_SESSION['logged_user']['id'];
@@ -69,15 +69,17 @@ if(isset($_POST['workNew'])){
 			$db_file_name = rand(10000000,99999999).".".$fileExt;
 
 			// начнем перемещать
+			if (empty($errors)) {
 
 			$uploadfile = $workImgFolderLocation.$db_file_name;
 			$moveResult = move_uploaded_file($fileTmpLoc,$uploadfile);
 			if($moveResult != true) {
 				$errors[] = ['title' => 'Файл не загружен'];
+				}
 			}
-
 			// делаем миниатюру
 
+				if (empty($errors)) {
 			require_once(ROOT."libs/image_resize_imagick.php");
 
 			$target_file = $workImgFolderLocation.$db_file_name;
@@ -98,13 +100,15 @@ if(isset($_POST['workNew'])){
 
 //			$user->avatarsmall =  "48-" . $db_file_name;
 //			$user->avatarsmall = $db_file_name;
+				}
 		}
 
-
-
+	if (empty($errors)) {
 		R::store($work);
 		header('Location:' . HOST . "portfolio?result=workCreated");
 		exit();
+	
+	}
 
 	}
 

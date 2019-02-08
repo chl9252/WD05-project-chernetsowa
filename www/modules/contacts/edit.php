@@ -38,7 +38,7 @@ if(isset($_POST['save-contacts'])){
 
 		R::store($contacts);
 
-		header('Location:' . HOST . "contacts");
+		header('Location:' . HOST . "contacts?result=contactUpdated");
 		exit();
 
 	}

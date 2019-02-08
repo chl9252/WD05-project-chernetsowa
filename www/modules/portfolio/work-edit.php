@@ -26,8 +26,8 @@ if(isset($_POST['workEdit'])){
 		$work->title = htmlentities($_POST['title']);
 //		$work->cat = htmlentities($_POST['work-cat']);
 		$work->text = $_POST['text'];
-		$work->result = htmlentities($_POST['result']);
-		$work->technologies = htmlentities($_POST['technologies']);
+		$work->result = $_POST['result'];
+		$work->technologies = $_POST['technologies'];
 		$work->project = htmlentities($_POST['project']);
 		$work->github = htmlentities($_POST['github']);
 		$work->authorId = $_SESSION['logged_user']['id'];
@@ -59,7 +59,7 @@ if(isset($_POST['workEdit'])){
 				} else if ($fileErrorMsg ==1) {
 					$errors[] = ['title' => 'Неизвестная ошибка при добавлении картинки'];
 				}
-
+				if (empty($errors)) {
 			$workImgFolderLocation = ROOT.'usercontent/portfolio/full/';
 			$workImgFolderLocationMin = ROOT.'usercontent/portfolio/min/';			
 
@@ -87,9 +87,10 @@ if(isset($_POST['workEdit'])){
 			if($moveResult != true) {
 				$errors[] = ['title' => 'Файл не загружен'];
 			}
+				}
 
 			// делаем миниатюру
-
+				if (empty($errors)) {
 			require_once(ROOT."libs/image_resize_imagick.php");
 
 			$target_file = $workImgFolderLocation.$db_file_name;
@@ -107,14 +108,15 @@ if(isset($_POST['workEdit'])){
 			$hmax = 190;
 			$img = createThumbnailCrop($target_file,$wmax,$hmax);
 			$img->writeImage($resized_file);
-
+				}
 
 		}
 
-
+			if (empty($errors)) {
 		R::store($work);
 		header('Location:' . HOST . "portfolio/work?id=$work->id&result=workUpdated");
 		exit();
+			}
 
 	}
 

@@ -1,4 +1,5 @@
-	
+
+<div class="sticky-footer-content">			
 	<div class="main-wrapper">
 		<?php require ROOT . "templates/about/about-text.tpl"; ?>
 		<div class="row">
@@ -19,15 +20,15 @@
 					<h2 class="title-2 title-1--weight mb-40"> Новые <a class="title-1--underline postlink" href="<?=HOST?>portfolio">работы</a></h2>
 				</div>
 			</div>
+		</div>
 
+		<div class="row ml-0 mr-0 mb-20">
+				<?php foreach ($works as $work) { ?>
+				<?php include ROOT . "templates/portfolio/_portfolio-card.tpl" ?>
 
-	<div class="row ml-0 mr-0 mb-20">
-			<?php foreach ($works as $work) { ?>
-			<?php include ROOT . "templates/portfolio/_portfolio-card.tpl" ?>
+				<?php 	}	?>
 
-			<?php 	}	?>
-
-	</div>
+		</div>
 
 
 		<div class="blog-entries container pl-0 pr-0">
@@ -38,18 +39,14 @@
 			</div>
 			<div class="row ml-0 mr-0 mb-0">
 							
-			<?php foreach ($posts as $post) { ?>
-			<?php include ROOT . "templates/_parts/_blog-card.tpl" ?>
+				<?php foreach ($posts as $post) { ?>
+				<?php include ROOT . "templates/_parts/_blog-card.tpl" ?>
 
-			<?php 	}	?>
-		
+				<?php 	}	?>
 			
-		</div>
-
-
-
-
-
+			
+			</div>
 
 		</div>
 	</div>
+</div>

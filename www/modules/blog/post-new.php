@@ -57,6 +57,7 @@ if(isset($_POST['postNew'])){
 					$errors[] = ['title' => 'Неизвестная ошибка при добавлении картинки'];
 				}
 
+				if (empty($errors)) {
 			$postImgFolderLocation = ROOT.'usercontent/blog/full/';
 			$postImgFolderLocationMin = ROOT.'usercontent/blog/min/';				
 
@@ -71,8 +72,11 @@ if(isset($_POST['postNew'])){
 			if($moveResult != true) {
 				$errors[] = ['title' => 'Файл не загружен'];
 			}
+				}
 
 			// делаем миниатюру
+
+				if (empty($errors)) {
 
 			require_once(ROOT."libs/image_resize_imagick.php");
 
@@ -94,17 +98,16 @@ if(isset($_POST['postNew'])){
 
 //			$user->avatarsmall =  "48-" . $db_file_name;
 //			$user->avatarsmall = $db_file_name;
+			
+				}
 		}
 
 
-/*	
-		$_SESSION['logged_user'] = $user;
-		$currentUser = $_SESSION['logged_user'];*/
-
+			if (empty($errors)) {
 		R::store($post);
 		header('Location:' . HOST . "blog?result=postCreated");
 		exit();
-
+			}
 	}
 
 }

@@ -12,7 +12,7 @@ $title = $work['name'];
 
 
 ob_start();
-//include ROOT . "templates/_parts/_header.tpl";
+include ROOT . "templates/_parts/_header.tpl";
 include ROOT . "templates/portfolio/work.tpl";
 
 $content = ob_get_contents();
