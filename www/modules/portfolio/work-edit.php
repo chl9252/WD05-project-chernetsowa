@@ -5,42 +5,43 @@ if (!isAdmin()) {
 	die;
 }
 
-$title = "Блог - Редактировать пост";
+$title = "Портфолио - Редактировать работу";
 
-$post = R::load('posts', $_GET['id']);
-
-$cats = R::find('categories', 'ORDER BY cat_title ASC');
+$work = R::load('works', $_GET['id']);
 
 
-if(isset($_POST['postEdit'])){
+if(isset($_POST['workEdit'])){
 
-	if (trim($_POST['post-name']) == '') {
-		$errors[] = ['title' => 'Введите Название поста'];
+	if (trim($_POST['title']) == '') {
+		$errors[] = ['title' => 'Введите название работы'];
 	}
-	if (trim($_POST['postText']) == '') {
-		$errors[] = ['title' => 'Введите Текст поста'];
+	if (trim($_POST['text']) == '') {
+		$errors[] = ['title' => 'Введите содержание'];
 	}
 
 
 	if (empty($errors)) {
 
 	
-		$post->title = htmlentities($_POST['post-name']);
-		$post->cat = htmlentities($_POST['post-cat']);
-		$post->text = $_POST['postText'];
-		$post->authorId = $_SESSION['logged_user']['id'];
-		$post->updateTime = R::isoDateTime();
+		$work->title = htmlentities($_POST['title']);
+//		$work->cat = htmlentities($_POST['work-cat']);
+		$work->text = $_POST['text'];
+		$work->result = $_POST['result'];
+		$work->technologies = $_POST['technologies'];
+		$work->project = htmlentities($_POST['project']);
+		$work->github = htmlentities($_POST['github']);
+		$work->authorId = $_SESSION['logged_user']['id'];
 
 		
 // image add
 		
-		if ( isset($_FILES['postImg']['name']) && ($_FILES['postImg']['tmp_name'] != "") ) {
+		if ( isset($_FILES['workimg']['name']) && ($_FILES['workimg']['tmp_name'] != "") ) {
 
-			$fileName = $_FILES["postImg"]["name"];
-			$fileTmpLoc = $_FILES["postImg"]["tmp_name"];
-			$fileType = $_FILES["postImg"]["type"];
-			$fileSize = $_FILES["postImg"]["size"];
-			$fileErrorMsg = $_FILES["postImg"]["error"];
+			$fileName = $_FILES["workimg"]["name"];
+			$fileTmpLoc = $_FILES["workimg"]["tmp_name"];
+			$fileType = $_FILES["workimg"]["type"];
+			$fileSize = $_FILES["workimg"]["size"];
+			$fileErrorMsg = $_FILES["workimg"]["error"];
 			$kaboom = explode(".",$fileName);
 			$fileExt = end($kaboom);
 
@@ -58,20 +59,19 @@ if(isset($_POST['postEdit'])){
 				} else if ($fileErrorMsg ==1) {
 					$errors[] = ['title' => 'Неизвестная ошибка при добавлении картинки'];
 				}
-
 				if (empty($errors)) {
-			$postImgFolderLocation = ROOT.'usercontent/blog/full/';
-			$postImgFolderLocationMin = ROOT.'usercontent/blog/min/';				
+			$workImgFolderLocation = ROOT.'usercontent/portfolio/full/';
+			$workImgFolderLocationMin = ROOT.'usercontent/portfolio/min/';			
 
-			$postImg = $post->post_img;
+			$workImg = $work->workimg;
 
 
-			if ( $postImg != "") {
-				$picurl = $postImgFolderLocation . $postImg;
+			if ( $workImg != "") {
+				$picurl = $workImgFolderLocation . $workImg;
 
 				if ( file_exists($picurl) ) {unlink($picurl);}
 
-				$picurl = $postImgFolderLocationMin . $postImg;
+				$picurl = $workImgFolderLocationMin . $workImg;
 
 				if ( file_exists($picurl) ) {unlink($picurl);}
 
@@ -82,7 +82,7 @@ if(isset($_POST['postEdit'])){
 
 			// начнем перемещать
 
-			$uploadfile = $postImgFolderLocation.$db_file_name;
+			$uploadfile = $workImgFolderLocation.$db_file_name;
 			$moveResult = move_uploaded_file($fileTmpLoc,$uploadfile);
 			if($moveResult != true) {
 				$errors[] = ['title' => 'Файл не загружен'];
@@ -93,30 +93,28 @@ if(isset($_POST['postEdit'])){
 				if (empty($errors)) {
 			require_once(ROOT."libs/image_resize_imagick.php");
 
-			$target_file = $postImgFolderLocation.$db_file_name;
-			$resized_file = $postImgFolderLocation.$db_file_name;
+			$target_file = $workImgFolderLocation.$db_file_name;
+			$resized_file = $workImgFolderLocation.$db_file_name;
 			$wmax = 920;
 			$hmax = 620;
 			$img = createThumbnail($target_file,$wmax,$hmax);
 			$img->writeImage($resized_file);
 
-			$post->postImg = $db_file_name;
+			$work->workimg = $db_file_name;
 
-			$target_file = $postImgFolderLocation.$db_file_name;
-			$resized_file = $postImgFolderLocationMin.$db_file_name;
-			$wmax = 320;
-			$hmax = 140;
+			$target_file = $workImgFolderLocation.$db_file_name;
+			$resized_file = $workImgFolderLocationMin.$db_file_name;
+			$wmax = 360;
+			$hmax = 190;
 			$img = createThumbnailCrop($target_file,$wmax,$hmax);
 			$img->writeImage($resized_file);
-
-//			$user->avatarsmall =  "48-" . $db_file_name;
-//			$user->avatarsmall = $db_file_name;
 				}
+
 		}
 
 			if (empty($errors)) {
-		R::store($post);
-		header('Location:' . HOST . "blog?result=postUpdated");
+		R::store($work);
+		header('Location:' . HOST . "portfolio/work?id=$work->id&result=workUpdated");
 		exit();
 			}
 
@@ -127,7 +125,7 @@ if(isset($_POST['postEdit'])){
 
 ob_start();
 include ROOT . "templates/_parts/_header.tpl";
-include ROOT . "templates/blog/post-edit.tpl";
+include ROOT . "templates/portfolio/work-edit.tpl";
 
 $content = ob_get_contents();
 ob_end_clean();
@@ -136,8 +134,6 @@ include ROOT . "templates/_parts/_head.tpl";
 include ROOT . "templates/template.tpl";
 include ROOT . "templates/_parts/_footer.tpl";
 include ROOT . "templates/_parts/_foot-editor.tpl";
-
-
 
 
 ?>

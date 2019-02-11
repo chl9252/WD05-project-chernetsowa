@@ -5,7 +5,7 @@ if (!isAdmin()) {
 	die;
 }
 
-$title = "Создать новую категорию";
+$title = "Добавить новую категорию";
 
 //$cats = R::find('categories', 'ORDER BY id DESC');
 
@@ -14,9 +14,15 @@ if(isset($_POST['catNew'])){
 	if (trim($_POST['cat-name']) == '') {
 		$errors[] = ['title' => 'Введите название категории'];
 	}
-	
+	 
 	if (empty($errors)) {
-		
+
+		$cat = R::findOne('categories', 'cat_title=?', array($_POST['cat-name']));
+		if ( count($cat) > 0) {
+			$errors[] = ['title' => 'Такая категория уже имеется'];
+		}
+
+		if (empty($errors)) {
 		$cat = R::dispense('categories');
 		$cat->cat_title = htmlentities($_POST['cat-name']);
 		
@@ -24,7 +30,7 @@ if(isset($_POST['catNew'])){
 
 		header('Location:' . HOST . "blog/categories?result=catCreated");
 		exit();
-
+}
 	}
 
 }

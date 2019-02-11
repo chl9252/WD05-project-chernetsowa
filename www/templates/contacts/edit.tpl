@@ -38,7 +38,7 @@ function dataFromPost($fieldName){
 							<label class="label" for="contactSkype">Skype</label>
 							<input class="input mb-30" name="skype" id="contactSkype" type="text" placeholder="Введите skype" value="<?=dataFromPost("skype");?>" />
 							<label class="label" for="contactFacebook">Facebook</label>
-							<input class="input mb-30" name="facebook" id="contactFacebook" type="url" placeholder="Введите ссылку на профиль" value="<?=dataFromPost("facebook");?>" />
+			 				<input class="input mb-30" name="facebook" id="contactFacebook" type="url" placeholder="Введите ссылку на профиль" value="<?=dataFromPost("facebook");?>" />
 							<label class="label" for="contactAddress">Адрес</label>
 							<input class="input" name="address" id="contactAddress" type="text" placeholder="Введите адрес" value="<?=dataFromPost("address");?>" />
 						</div>

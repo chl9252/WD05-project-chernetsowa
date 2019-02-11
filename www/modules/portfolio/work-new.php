@@ -5,40 +5,44 @@ if (!isAdmin()) {
 	die;
 }
 
-$title = "Блог - добавить новый пост";
+$title = "Порфолио - добавить новую работу";
 
-$cats = R::find('categories', 'ORDER BY cat_title ASC');
 
-if(isset($_POST['postNew'])){
+if(isset($_POST['workNew'])){
 
-	if (trim($_POST['post-name']) == '') {
-		$errors[] = ['title' => 'Введите Название поста'];
+	if (trim($_POST['title']) == '') {
+		$errors[] = ['title' => 'Введите название работы'];
 	}
-	if (trim($_POST['postText']) == '') {
-		$errors[] = ['title' => 'Введите Текст поста'];
+	if (trim($_POST['text']) == '') {
+		$errors[] = ['title' => 'Введите содержание'];
 	}
+
 
 
 	if (empty($errors)) {
 
-		$post = R::dispense('posts');
+		$work = R::dispense('works');
 		
-		$post->title = htmlentities($_POST['post-name']);
-		$post->cat = htmlentities($_POST['post-cat']);
-		$post->text = $_POST['postText'];
-		$post->authorId = $_SESSION['logged_user']['id'];
-		$post->dateTime = R::isoDateTime();
+		$work->title = htmlentities($_POST['title']);
+//		$work->cat = htmlentities($_POST['work-cat']);
+		$work->text = $_POST['text'];
+		$work->result = $_POST['result'];
+		$work->technologies = $_POST['technologies'];
+		$work->project = htmlentities($_POST['project']);
+		$work->github = htmlentities($_POST['github']);
+		$work->authorId = $_SESSION['logged_user']['id'];
+		$work->date_time = R::isoDateTime();
 
 		
 // image add
 		
-		if ( isset($_FILES['postImg']['name']) && ($_FILES['postImg']['tmp_name'] != "") ) {
+		if ( isset($_FILES['workimg']['name']) && ($_FILES['workimg']['tmp_name'] != "") ) {
 
-			$fileName = $_FILES["postImg"]["name"];
-			$fileTmpLoc = $_FILES["postImg"]["tmp_name"];
-			$fileType = $_FILES["postImg"]["type"];
-			$fileSize = $_FILES["postImg"]["size"];
-			$fileErrorMsg = $_FILES["postImg"]["error"];
+			$fileName = $_FILES["workimg"]["name"];
+			$fileTmpLoc = $_FILES["workimg"]["tmp_name"];
+			$fileType = $_FILES["workimg"]["type"];
+			$fileSize = $_FILES["workimg"]["size"];
+			$fileErrorMsg = $_FILES["workimg"]["error"];
 			$kaboom = explode(".",$fileName);
 			$fileExt = end($kaboom);
 
@@ -57,64 +61,62 @@ if(isset($_POST['postNew'])){
 					$errors[] = ['title' => 'Неизвестная ошибка при добавлении картинки'];
 				}
 
-				if (empty($errors)) {
-			$postImgFolderLocation = ROOT.'usercontent/blog/full/';
-			$postImgFolderLocationMin = ROOT.'usercontent/blog/min/';				
+			$workImgFolderLocation = ROOT.'usercontent/portfolio/full/';
+			$workImgFolderLocationMin = ROOT.'usercontent/portfolio/min/';				
 
 
 
 			$db_file_name = rand(10000000,99999999).".".$fileExt;
 
 			// начнем перемещать
+			if (empty($errors)) {
 
-			$uploadfile = $postImgFolderLocation.$db_file_name;
+			$uploadfile = $workImgFolderLocation.$db_file_name;
 			$moveResult = move_uploaded_file($fileTmpLoc,$uploadfile);
 			if($moveResult != true) {
 				$errors[] = ['title' => 'Файл не загружен'];
-			}
 				}
-
+			}
 			// делаем миниатюру
 
 				if (empty($errors)) {
-
 			require_once(ROOT."libs/image_resize_imagick.php");
 
-			$target_file = $postImgFolderLocation.$db_file_name;
-			$resized_file = $postImgFolderLocation.$db_file_name;
+			$target_file = $workImgFolderLocation.$db_file_name;
+			$resized_file = $workImgFolderLocation.$db_file_name;
 			$wmax = 920;
 			$hmax = 620;
 			$img = createThumbnail($target_file,$wmax,$hmax);
 			$img->writeImage($resized_file);
 
-			$post->postImg = $db_file_name;
+			$work->workimg = $db_file_name;
 
-			$target_file = $postImgFolderLocation.$db_file_name;
-			$resized_file = $postImgFolderLocationMin.$db_file_name;
-			$wmax = 320;
-			$hmax = 140;
+			$target_file = $workImgFolderLocation.$db_file_name;
+			$resized_file = $workImgFolderLocationMin.$db_file_name;
+			$wmax = 360;
+			$hmax = 180;
 			$img = createThumbnailCrop($target_file,$wmax,$hmax);
 			$img->writeImage($resized_file);
 
 //			$user->avatarsmall =  "48-" . $db_file_name;
 //			$user->avatarsmall = $db_file_name;
-			
 				}
 		}
 
-
-			if (empty($errors)) {
-		R::store($post);
-		header('Location:' . HOST . "blog?result=postCreated");
+	if (empty($errors)) {
+		R::store($work);
+		header('Location:' . HOST . "portfolio?result=workCreated");
 		exit();
-			}
+	
+	}
+
 	}
 
 }
 
 ob_start();
 include ROOT . "templates/_parts/_header.tpl";
-include ROOT . "templates/blog/post-new.tpl";
+include ROOT . "templates/portfolio/work-new.tpl";
 
 $content = ob_get_contents();
 ob_end_clean();

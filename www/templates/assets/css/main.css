@@ -1373,8 +1373,14 @@ a.title-medium,
 .val-0 {
   stroke-dashoffset: 351.85px;
 }
+.val-5 {
+  stroke-dashoffset: 334.25px;
+}
 .val-10 {
   stroke-dashoffset: 316.66px;
+}
+.val-15 {
+  stroke-dashoffset: 299.07px;
 }
 .val-20 {
   stroke-dashoffset: 281.48px;
@@ -1384,6 +1390,9 @@ a.title-medium,
 }
 .val-30 {
   stroke-dashoffset: 246.29px;
+}
+.val-35 {
+  stroke-dashoffset: 228.7px;
 }
 .val-40 {
   stroke-dashoffset: 211.11px;

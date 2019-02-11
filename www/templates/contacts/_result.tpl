@@ -12,8 +12,9 @@
 
 	<div class="notification" data-notify-hide>
 		<div class="notify notification--success notification__title mb-30">
-			Сообщение было успешно отправлено!
+			Сообщение успешно отправлено!
 		</div>
 	</div>
 		
 <?php }	?>
+
